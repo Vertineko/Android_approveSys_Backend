@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.vertineko.android.dao.CourseDao">
+    <select id="getAllCourse">
+        select * from `course_select`
+    </select>
+    <select id="getCourseById">
+        select * from `course_select` where id = #{id}
+    </select>
+    <insert id="addCourse">
+        insert into `course_select`(`id`,`code`,`name`,`catalory`,`creadit`)
+        values (#{id},#{code},#{name},#{catalory},#{creadit})
+    </insert>
+    <update id="modify">
+        update `course_select` set code=#{code},name=#{name},catalory=#{catalory},creadit=#{creadit}
+        where id = #{id}
+    </update>
+    <delete id="delete">
+        delete from `course_select` where id = #{id}
+    </delete>
+</mapper>

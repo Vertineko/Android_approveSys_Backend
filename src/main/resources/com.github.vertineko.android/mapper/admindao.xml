@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.vertineko.android.dao.AdminDao">
+    <select id="getAdmin">
+        select * from `admin` where username = #{username}
+    </select>
+    <select id="getAllAdmin">
+        select * from `admin`
+    </select>
+    <insert id="addAdmin">
+        insert into `admin`(`id`,`username`,`password`)
+        values (#{id},#{username},#{password})
+    </insert>
+    <update id="modify">
+        update `admin` set username = #{username},password = #{password}
+        where id = #{id}
+    </update>
+    <delete id="delete">
+        delete from `admin` where id = #{id}
+    </delete>
+    <select id="getAdminById">
+        select * from `admin` where id = #{id}
+    </select>
+</mapper>

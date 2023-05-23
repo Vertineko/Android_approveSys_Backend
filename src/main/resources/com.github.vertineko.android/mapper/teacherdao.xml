@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.vertineko.android.dao.TeacherDao">
+        <select id="getTeacher">
+            select * from `teacher` where account = #{account}
+        </select>
+        <select id="getSpeecherofClass">
+            select * from `teacher` where course_id in(
+                select id form `course_select` where id = #{course_id}
+                ) and role = 'SPEECHER'
+        </select>
+        <select id="getManageofClass">
+            select * from `teacher` where course_id in(
+                select id form `course_select` where id = #{course_id}
+                ) and role = 'MANAGE'
+        </select>
+        <select id="getTeacherById">
+            select * from `teacher` where id = #{id}
+        </select>
+        <select id="getAllTeacher">
+            select * from `teacher`
+        </select>
+        <delete id="deleteTeacher">
+            delete from `teacher` where id = #{id}
+        </delete>
+        <update id="updateTeacher">
+            update `teacher` set name = #{name},telephone = #{telephone},role = #{role},course_id = #{course_id},account = #{account},password = #{password}
+            where id = #{id}
+        </update>
+        <insert id="addTeacher">
+            insert into `teacher`(`account`,`password`,`name`,`telephone`,`role`,`course_id`,`id`)
+            values (#{account},#{password},#{name},#{telephone},#{role},#{course_id},#{id})
+        </insert>
+</mapper>
