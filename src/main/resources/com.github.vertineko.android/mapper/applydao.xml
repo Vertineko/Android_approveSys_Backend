@@ -93,7 +93,7 @@
         from `course_approve` a inner join `course_select` b on
         a.course_id = b.id
         where
-        a.teacher1_id = #{teacher_id} or a.teacher2_id = #{teacher_id}
+        (a.teacher1_id = #{teacher_id} or a.teacher2_id = #{teacher_id})
         <if test="apply_id!=null and apply_id!=''">
             and a.id like concat(concat('%',#{apply_id}),'%')
         </if>
